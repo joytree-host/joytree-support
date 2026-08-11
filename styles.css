@@ -109,17 +109,21 @@ button{ font-family: inherit; }
 .brand-sub{ color: var(--text-faint); font-weight: 500; }
 
 .topbar-search{
-  position: relative; flex: 1; max-width: 420px; margin: 0 auto 0 12px;
+  position: relative; flex: 1; min-width: 0; max-width: 420px; margin: 0 auto 0 12px;
   display: flex; align-items: center; gap: 8px;
   background: var(--bg-sunken); border: 1px solid var(--border);
   border-radius: 999px; padding: 0 14px; height: 38px;
 }
 .topbar-search .search-icon{ color: var(--text-faint); flex-shrink: 0; }
 .topbar-search input{
-  flex: 1; border: none; background: none; outline: none; color: var(--text);
+  flex: 1; min-width: 0; border: none; background: none; outline: none; color: var(--text);
   font-size: 13.5px; font-family: var(--font-body);
 }
 .topbar-search input::placeholder{ color: var(--text-faint); }
+.search-close{
+  display: none; flex-shrink: 0; width: 22px; height: 22px; align-items: center; justify-content: center;
+  background: none; border: none; color: var(--text-faint); cursor: pointer; padding: 0;
+}
 
 .topnav{ display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
 .topnav-link{
@@ -127,6 +131,8 @@ button{ font-family: inherit; }
   padding: 8px 12px; border-radius: 8px; white-space: nowrap;
 }
 .topnav-link:hover{ color: var(--text); background: var(--bg-sunken); }
+
+.search-toggle{ display: none; }
 
 .icon-btn{
   width: 36px; height: 36px; flex-shrink: 0;
@@ -419,8 +425,24 @@ button{ font-family: inherit; }
 }
 @media (max-width: 720px){
   .topnav{ display: none; }
-  .topbar-inner{ gap: 10px; padding: 0 14px; }
-  .topbar-search{ max-width: none; }
+  .topbar-inner{ gap: 8px; padding: 0 14px; }
+  .brand-sub{ display: none; }
+
+  /* Collapse the search pill into an icon button; tapping it expands
+     the topbar into a full-width search row instead of squeezing the
+     pill down to nothing and pushing the theme/menu buttons around. */
+  .topbar-search{ display: none; }
+  .search-toggle{ display: flex; }
+  .topbar-inner.search-open .brand,
+  .topbar-inner.search-open .search-toggle,
+  .topbar-inner.search-open .theme-toggle,
+  .topbar-inner.search-open .nav-toggle{ display: none; }
+  .topbar-inner.search-open .topbar-search{
+    display: flex; max-width: none; width: 100%; margin: 0;
+  }
+  .topbar-inner.search-open{ gap: 0; }
+  .topbar-inner.search-open .search-close{ display: flex; }
+
   .collections-grid{ grid-template-columns: 1fr; }
   .home-hero{ padding: 44px 16px 30px; }
   .home-hero h1{ font-size: 26px; }

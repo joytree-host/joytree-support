@@ -364,6 +364,24 @@
   contactBubble.addEventListener('click', () => { contactPanel.hidden = !contactPanel.hidden; });
   document.getElementById('contactPanelClose').addEventListener('click', () => { contactPanel.hidden = true; });
 
+  // ---------------------------------------------------------------- mobile search expand/collapse
+  const topbarInner = document.querySelector('.topbar-inner');
+  const searchToggle = document.getElementById('searchToggle');
+  const searchClose = document.getElementById('searchClose');
+  if (searchToggle) {
+    searchToggle.addEventListener('click', () => {
+      topbarInner.classList.add('search-open');
+      searchInput.focus();
+    });
+  }
+  if (searchClose) {
+    searchClose.addEventListener('click', () => {
+      topbarInner.classList.remove('search-open');
+      searchResults.hidden = true;
+      searchInput.value = '';
+    });
+  }
+
   // ---------------------------------------------------------------- topbar search
   const searchInput = document.getElementById('searchInput');
   const searchResults = document.getElementById('searchResults');
@@ -374,7 +392,11 @@
       location.hash = '#/search/' + encodeURIComponent(searchInput.value.trim());
       searchResults.hidden = true;
     }
-    if (e.key === 'Escape') { searchResults.hidden = true; searchInput.blur(); }
+    if (e.key === 'Escape') {
+      searchResults.hidden = true;
+      searchInput.blur();
+      if (topbarInner) topbarInner.classList.remove('search-open');
+    }
   });
   document.addEventListener('click', (e) => {
     if (!document.getElementById('topbarSearchWrap').contains(e.target)) searchResults.hidden = true;
@@ -392,6 +414,7 @@
   function route() {
     const hash = location.hash.replace(/^#\/?/, '');
     searchResults.hidden = true;
+    if (topbarInner) topbarInner.classList.remove('search-open');
 
     if (!hash) {
       renderHome();
