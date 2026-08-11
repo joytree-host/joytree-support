@@ -1,0 +1,12 @@
+{
+  "name": "joytree-support",
+  "version": "1.0.0",
+  "description": "Joytree Support — Help Center (support.joytree.site)",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
