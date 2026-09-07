@@ -437,7 +437,7 @@ button{ font-family: inherit; }
      the topbar into a full-width search row instead of squeezing the
      pill down to nothing and pushing the theme/menu buttons around. */
   .topbar-search{ display: none; }
-  .search-toggle{ display: flex; }
+  .search-toggle{ display: flex; margin-left: auto; }
   .topbar-inner.search-open .brand,
   .topbar-inner.search-open .search-toggle,
   .topbar-inner.search-open .theme-toggle,
