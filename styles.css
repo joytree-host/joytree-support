@@ -215,9 +215,7 @@ button{ font-family: inherit; }
 /* ---------------------------------------------------------------- home hero */
 .home-hero{
   padding: 64px 20px 40px; text-align: center;
-  background:
-    radial-gradient(circle at 18% 20%, color-mix(in srgb, var(--brand) 7%, transparent), transparent 45%),
-    radial-gradient(circle at 84% 0%, color-mix(in srgb, var(--accent) 6%, transparent), transparent 40%);
+  background: transparent;
 }
 .home-hero h1{
   font-family: var(--font-display); font-weight: 800; letter-spacing: -0.02em;
