@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Joytree Support — app shell
+   JOYTREE Support — app shell
    Hash-based router: #/  #/c/<group-key>  #/<page-key>  #/search/<query>
    ========================================================================== */
 
@@ -187,7 +187,7 @@
       </a></li>`;
     }).join('');
 
-    document.title = `${group.title} — Joytree Support`;
+    document.title = `${group.title} — JOYTREE Support`;
   }
 
   // ---------------------------------------------------------------- article render
@@ -225,7 +225,7 @@
       relatedBlock.hidden = true;
     }
 
-    document.title = `${page.title} — Joytree Support`;
+    document.title = `${page.title} — JOYTREE Support`;
   }
 
   // ---------------------------------------------------------------- search
@@ -419,14 +419,14 @@
     if (!hash) {
       renderHome();
       showView('home');
-      document.title = 'Joytree Support — Help Center';
+      document.title = 'JOYTREE Support — Help Center';
       return;
     }
     if (hash.startsWith('search/')) {
       const q = decodeURIComponent(hash.slice(7));
       renderSearchView(q);
       showView('search');
-      document.title = `Search: ${q} — Joytree Support`;
+      document.title = `Search: ${q} — JOYTREE Support`;
       return;
     }
     if (hash.startsWith('c/')) {

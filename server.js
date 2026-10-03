@@ -49,5 +49,5 @@ http.createServer((req, res) => {
     res.end(data);
   });
 }).listen(PORT, () => {
-  console.log(`Joytree Support running on port ${PORT}`);
+  console.log(`JOYTREE Support running on port ${PORT}`);
 });

@@ -1,12 +1,12 @@
 /* ==========================================================================
-   Joytree Support — Collection metadata
+   JOYTREE Support — Collection metadata
    Icon + description for each NAV group in content.js. Article counts are
    derived at render time from NAV itself, so they never go stale.
    ========================================================================== */
 
 const COLLECTION_META = {
   start: {
-    desc: 'What Joytree is, how it works, and how to ship your first deploy.',
+    desc: 'What JOYTREE is, how it works, and how to ship your first deploy.',
     icon: '<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>'
   },
   dashboard: {
@@ -54,7 +54,7 @@ const COLLECTION_META = {
     icon: '<polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>'
   },
   mcp: {
-    desc: 'Connecting Joytree to Claude and other MCP-compatible tools.',
+    desc: 'Connecting JOYTREE to Claude and other MCP-compatible tools.',
     icon: '<path d="M9 3v4"/><path d="M15 3v4"/><path d="M9 21v-4"/><path d="M15 21v-4"/><rect x="4" y="7" width="16" height="10" rx="2"/>'
   },
   api: {
