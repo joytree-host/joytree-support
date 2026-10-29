@@ -375,8 +375,7 @@ html[data-theme="light"] .icon-btn:hover{ background: #f3f4f6; }
   background: transparent; margin: 0 0 16px; font-size: 14px;
 }
 .callout-icon{ flex-shrink: 0; margin-top: 2px; color: var(--text-dim); }
-.callout.tip{ border-left-color: var(--brand-ring); }
-.callout.tip .callout-icon{ color: var(--brand-link); }
+
 .callout.warn{ border-left-color: var(--accent); }
 .callout.warn .callout-icon{ color: var(--accent); }
 .callout p{ margin: 0; }
@@ -475,3 +474,76 @@ html[data-theme="light"] .icon-btn:hover{ background: #f3f4f6; }
   .view{ animation: none; }
   *{ transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* ==========================================================================
+   FLEET — the JOYTREE green hero (same recipe as the dashboard's Command
+   Center header): dark-emerald 135° gradient, 20px dot grid, soft top-right
+   glow, concentric ring accent, pale-mint kicker, white title, frosted-glass
+   ghost button + solid white primary button.
+   ========================================================================== */
+.fleet{
+  --fleet-dots: radial-gradient(rgba(255,255,255,.16) 1px, transparent 1.4px) 0 0/20px 20px;
+  --fleet-green: linear-gradient(135deg,#064e3b 0%,#047857 55%,#0f9f6e 135%);
+  position: relative; overflow: hidden; isolation: isolate;
+  border-radius: 12px; color: #fff;
+  background: radial-gradient(420px 220px at 100% 0%, rgba(255,255,255,.2), transparent 70%), var(--fleet-dots), var(--fleet-green);
+  padding: 28px 32px;
+}
+html[data-theme="dark"] .fleet{ --fleet-green: linear-gradient(135deg,#053f31 0%,#047857 58%,#0d9467 135%); }
+.fleet::after{
+  content: ""; position: absolute; z-index: -1; right: -46px; bottom: -64px; width: 190px; height: 190px;
+  border-radius: 50%; border: 1.5px solid rgba(255,255,255,.22);
+  box-shadow: 0 0 0 26px rgba(255,255,255,.05), 0 0 0 54px rgba(255,255,255,.035); pointer-events: none;
+}
+.fleet-kicker{ color: #a7f3d0; font-size: 14px; font-weight: 600; margin: 0 0 6px; }
+.fleet-actions{ display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+.fleet-btn{
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 36px; padding: 0 18px; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer;
+  transition: background .12s;
+}
+.fleet-btn.ghost{
+  background: rgba(255,255,255,.16); color: #fff; border: 1px solid rgba(255,255,255,.55);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.16); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.fleet-btn.ghost:hover{ background: rgba(255,255,255,.28); }
+.fleet-btn.primary{ background: #fff; color: #065f46; border: 1px solid #fff; box-shadow: 0 3px 0 rgba(2,44,34,.3); }
+.fleet-btn.primary:hover{ background: #ecfdf5; }
+
+/* support page headers */
+.home-hero.fleet{ border-radius: 0; border-bottom: 0; background: radial-gradient(420px 220px at 100% 0%, rgba(255,255,255,.2), transparent 70%), var(--fleet-dots), var(--fleet-green); padding: 56px 20px 52px; text-align: center; }
+.home-hero.fleet h1{ color: #fff; margin: 0 auto 24px; }
+.home-hero.fleet::after{ right: 6%; bottom: -80px; }
+.home-hero.fleet .home-search{ border-color: #fff; box-shadow: 0 3px 0 rgba(2,44,34,.3); }
+.home-hero.fleet .home-search:focus-within{ box-shadow: 0 3px 0 rgba(2,44,34,.3), 0 0 0 3px rgba(167,243,208,.6); }
+.home-hero.fleet .fleet-kicker{ text-align: center; margin-bottom: 10px; }
+
+.page-col .fleet{ margin: 0 0 28px; }
+.page-col .breadcrumb{ margin-bottom: 12px; }
+.fleet h1{ color: #fff; margin: 0; }
+.article-fleet .article-meta-row{ border: 0; margin: 14px 0 0; padding: 0; }
+.fleet .article-date{ color: rgba(255,255,255,.86); }
+.fleet .copy-llm-btn{
+  height: 32px; border-radius: 10px; background: rgba(255,255,255,.16); color: #fff;
+  border: 1px solid rgba(255,255,255,.55); box-shadow: inset 0 1px 0 rgba(255,255,255,.16);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.fleet .copy-llm-btn:hover{ background: rgba(255,255,255,.28); border-color: rgba(255,255,255,.7); }
+.fleet .copy-llm-btn.copied{ background: #fff; color: #065f46; border-color: #fff; }
+.collection-head.fleet{ align-items: center; gap: 18px; }
+.collection-head.fleet .collection-head-icon{ color: #a7f3d0; margin-top: 0; }
+.collection-head.fleet h1{ margin: 0 0 6px; }
+.collection-head.fleet .collection-desc{ color: rgba(255,255,255,.86); }
+.fleet .search-results-title{ margin: 0; }
+
+/* green tip notes = mini fleet panels */
+.doc-content .callout.tip{
+  border: 0; border-radius: 10px; padding: 12px 16px; color: #fff; position: relative; overflow: hidden; isolation: isolate;
+  background: radial-gradient(260px 140px at 100% 0%, rgba(255,255,255,.18), transparent 70%), radial-gradient(rgba(255,255,255,.16) 1px, transparent 1.4px) 0 0/20px 20px, linear-gradient(135deg,#064e3b 0%,#047857 55%,#0f9f6e 135%);
+}
+html[data-theme="dark"] .doc-content .callout.tip{ background: radial-gradient(260px 140px at 100% 0%, rgba(255,255,255,.14), transparent 70%), radial-gradient(rgba(255,255,255,.16) 1px, transparent 1.4px) 0 0/20px 20px, linear-gradient(135deg,#053f31 0%,#047857 58%,#0d9467 135%); }
+.doc-content .callout.tip .callout-icon{ color: #a7f3d0; }
+.doc-content .callout.tip p, .doc-content .callout.tip strong{ color: #fff; }
+.doc-content .callout.tip a.md-link{ color: #fff; text-decoration: underline; }
+.doc-content .callout.tip code:not(pre code){ background: rgba(255,255,255,.18); color: #fff; }
+@media (max-width: 720px){ .page-col .fleet{ padding: 22px 18px; } .home-hero.fleet{ padding: 40px 16px 36px; } }
