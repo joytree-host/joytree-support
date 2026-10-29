@@ -518,10 +518,8 @@ html[data-theme="dark"] .fleet{ --fleet-green: linear-gradient(135deg,#053f31 0%
 .home-hero.fleet .home-search:focus-within{ box-shadow: 0 3px 0 rgba(2,44,34,.3), 0 0 0 3px rgba(167,243,208,.6); }
 .home-hero.fleet .fleet-kicker{ text-align: center; margin-bottom: 10px; }
 
-.page-col .fleet{ margin: 0 0 28px; }
-.page-col .breadcrumb{ margin-bottom: 12px; }
 .fleet h1{ color: #fff; margin: 0; }
-.article-fleet .article-meta-row{ border: 0; margin: 14px 0 0; padding: 0; }
+.page-hero .article-meta-row{ border: 0; margin: 14px 0 0; padding: 0; }
 .fleet .article-date{ color: rgba(255,255,255,.86); }
 .fleet .copy-llm-btn{
   height: 32px; border-radius: 10px; background: rgba(255,255,255,.16); color: #fff;
@@ -530,10 +528,10 @@ html[data-theme="dark"] .fleet{ --fleet-green: linear-gradient(135deg,#053f31 0%
 }
 .fleet .copy-llm-btn:hover{ background: rgba(255,255,255,.28); border-color: rgba(255,255,255,.7); }
 .fleet .copy-llm-btn.copied{ background: #fff; color: #065f46; border-color: #fff; }
-.collection-head.fleet{ align-items: center; gap: 18px; }
-.collection-head.fleet .collection-head-icon{ color: #a7f3d0; margin-top: 0; }
-.collection-head.fleet h1{ margin: 0 0 6px; }
-.collection-head.fleet .collection-desc{ color: rgba(255,255,255,.86); }
+.page-hero .collection-head{ align-items: center; gap: 18px; margin: 0; }
+.page-hero .collection-head-icon{ color: #a7f3d0; margin-top: 0; }
+.page-hero .collection-head h1{ margin: 0 0 6px; }
+.page-hero .collection-desc{ color: rgba(255,255,255,.86); }
 .fleet .search-results-title{ margin: 0; }
 
 /* green tip notes = mini fleet panels */
@@ -546,4 +544,19 @@ html[data-theme="dark"] .doc-content .callout.tip{ background: radial-gradient(2
 .doc-content .callout.tip p, .doc-content .callout.tip strong{ color: #fff; }
 .doc-content .callout.tip a.md-link{ color: #fff; text-decoration: underline; }
 .doc-content .callout.tip code:not(pre code){ background: rgba(255,255,255,.18); color: #fff; }
-@media (max-width: 720px){ .page-col .fleet{ padding: 22px 18px; } .home-hero.fleet{ padding: 40px 16px 36px; } }
+@media (max-width: 720px){ .page-hero .hero-main{ padding: 16px 16px 22px; } .home-hero.fleet{ padding: 40px 16px 36px; } }
+
+/* ---------- full-bleed fleet hero band (closes its borders like the dashboard hero) ---------- */
+.page-hero{ border-radius: 0; padding: 0; }
+.page-hero .hero-main{ max-width: 1180px; margin: 0 auto; padding: 22px 20px 30px; }
+.page-hero .breadcrumb{ margin: 0 0 14px; padding: 0; max-width: none; color: rgba(255,255,255,.78); }
+.page-hero .breadcrumb a{ color: #fff; }
+.page-hero .breadcrumb span.sep{ color: rgba(255,255,255,.5); }
+.page-hero .breadcrumb span.current{ color: rgba(255,255,255,.78); }
+.page-hero h1{ color: #fff; font-size: 32px; font-weight: 600; line-height: 1.25; margin: 0; }
+.page-hero .search-results-title{ font-size: 28px; margin: 0; }
+.page-hero .article-date{ color: rgba(255,255,255,.86); }
+.page-hero .article-meta-row{ border: 0; margin: 14px 0 0; padding: 0; }
+.page-hero::after{ right: -46px; bottom: -64px; }
+.page-col .article-body{ margin-top: 0; }
+@media (max-width: 720px){ .page-hero h1{ font-size: 26px; } }
