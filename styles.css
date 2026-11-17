@@ -475,65 +475,6 @@ html[data-theme="light"] .icon-btn:hover{ background: #f3f4f6; }
   *{ transition: none !important; scroll-behavior: auto !important; }
 }
 
-/* ==========================================================================
-   FLEET — the JOYTREE green hero (same recipe as the dashboard's Command
-   Center header): dark-emerald 135° gradient, 20px dot grid, soft top-right
-   glow, concentric ring accent, pale-mint kicker, white title, frosted-glass
-   ghost button + solid white primary button.
-   ========================================================================== */
-.fleet{
-  --fleet-dots: radial-gradient(rgba(255,255,255,.16) 1px, transparent 1.4px) 0 0/20px 20px;
-  --fleet-green: linear-gradient(135deg,#064e3b 0%,#047857 55%,#0f9f6e 135%);
-  position: relative; overflow: hidden; isolation: isolate;
-  border-radius: 12px; color: #fff;
-  background: radial-gradient(420px 220px at 100% 0%, rgba(255,255,255,.2), transparent 70%), var(--fleet-dots), var(--fleet-green);
-  padding: 28px 32px;
-}
-html[data-theme="dark"] .fleet{ --fleet-green: linear-gradient(135deg,#053f31 0%,#047857 58%,#0d9467 135%); }
-.fleet::after{
-  content: ""; position: absolute; z-index: -1; right: -46px; bottom: -64px; width: 190px; height: 190px;
-  border-radius: 50%; border: 1.5px solid rgba(255,255,255,.22);
-  box-shadow: 0 0 0 26px rgba(255,255,255,.05), 0 0 0 54px rgba(255,255,255,.035); pointer-events: none;
-}
-.fleet-kicker{ color: #a7f3d0; font-size: 14px; font-weight: 600; margin: 0 0 6px; }
-.fleet-actions{ display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
-.fleet-btn{
-  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  height: 36px; padding: 0 18px; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer;
-  transition: background .12s;
-}
-.fleet-btn.ghost{
-  background: rgba(255,255,255,.16); color: #fff; border: 1px solid rgba(255,255,255,.55);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.16); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
-}
-.fleet-btn.ghost:hover{ background: rgba(255,255,255,.28); }
-.fleet-btn.primary{ background: #fff; color: #065f46; border: 1px solid #fff; box-shadow: 0 3px 0 rgba(2,44,34,.3); }
-.fleet-btn.primary:hover{ background: #ecfdf5; }
-
-/* support page headers */
-.home-hero.fleet{ border-radius: 0; border-bottom: 0; background: radial-gradient(420px 220px at 100% 0%, rgba(255,255,255,.2), transparent 70%), var(--fleet-dots), var(--fleet-green); padding: 56px 20px 52px; text-align: center; }
-.home-hero.fleet h1{ color: #fff; margin: 0 auto 24px; }
-.home-hero.fleet::after{ right: 6%; bottom: -80px; }
-.home-hero.fleet .home-search{ border-color: #fff; box-shadow: 0 3px 0 rgba(2,44,34,.3); }
-.home-hero.fleet .home-search:focus-within{ box-shadow: 0 3px 0 rgba(2,44,34,.3), 0 0 0 3px rgba(167,243,208,.6); }
-.home-hero.fleet .fleet-kicker{ text-align: center; margin-bottom: 10px; }
-
-.fleet h1{ color: #fff; margin: 0; }
-.page-hero .article-meta-row{ border: 0; margin: 14px 0 0; padding: 0; }
-.fleet .article-date{ color: rgba(255,255,255,.86); }
-.fleet .copy-llm-btn{
-  height: 32px; border-radius: 10px; background: rgba(255,255,255,.16); color: #fff;
-  border: 1px solid rgba(255,255,255,.55); box-shadow: inset 0 1px 0 rgba(255,255,255,.16);
-  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
-}
-.fleet .copy-llm-btn:hover{ background: rgba(255,255,255,.28); border-color: rgba(255,255,255,.7); }
-.fleet .copy-llm-btn.copied{ background: #fff; color: #065f46; border-color: #fff; }
-.page-hero .collection-head{ align-items: center; gap: 18px; margin: 0; }
-.page-hero .collection-head-icon{ color: #a7f3d0; margin-top: 0; }
-.page-hero .collection-head h1{ margin: 0 0 6px; }
-.page-hero .collection-desc{ color: rgba(255,255,255,.86); }
-.fleet .search-results-title{ margin: 0; }
-
 /* green tip notes = mini fleet panels */
 .doc-content .callout.tip{
   border: 0; border-radius: 10px; padding: 12px 16px; color: #fff; position: relative; overflow: hidden; isolation: isolate;
@@ -544,19 +485,27 @@ html[data-theme="dark"] .doc-content .callout.tip{ background: radial-gradient(2
 .doc-content .callout.tip p, .doc-content .callout.tip strong{ color: #fff; }
 .doc-content .callout.tip a.md-link{ color: #fff; text-decoration: underline; }
 .doc-content .callout.tip code:not(pre code){ background: rgba(255,255,255,.18); color: #fff; }
-@media (max-width: 720px){ .page-hero .hero-main{ padding: 16px 16px 22px; } .home-hero.fleet{ padding: 40px 16px 36px; } }
 
-/* ---------- full-bleed fleet hero band (closes its borders like the dashboard hero) ---------- */
-.page-hero{ border-radius: 0; padding: 0; }
-.page-hero .hero-main{ max-width: 1180px; margin: 0 auto; padding: 22px 20px 30px; }
-.page-hero .breadcrumb{ margin: 0 0 14px; padding: 0; max-width: none; color: rgba(255,255,255,.78); }
-.page-hero .breadcrumb a{ color: #fff; }
-.page-hero .breadcrumb span.sep{ color: rgba(255,255,255,.5); }
-.page-hero .breadcrumb span.current{ color: rgba(255,255,255,.78); }
-.page-hero h1{ color: #fff; font-size: 32px; font-weight: 600; line-height: 1.25; margin: 0; }
-.page-hero .search-results-title{ font-size: 28px; margin: 0; }
-.page-hero .article-date{ color: rgba(255,255,255,.86); }
-.page-hero .article-meta-row{ border: 0; margin: 14px 0 0; padding: 0; }
-.page-hero::after{ right: -46px; bottom: -64px; }
+/* ==========================================================================
+   PLAIN PAGE HEADERS — like Claude's help center: no coloured band, just the
+   page background, a muted breadcrumb, a big title, date + "Copy for LLM",
+   and a thin divider before the content.
+   ========================================================================== */
+.home-hero{ background: none; border-bottom: 0; padding: 64px 20px 36px; }
+.home-hero h1{ font-size: clamp(30px, 5vw, 44px); font-weight: 600; letter-spacing: -.01em; }
+.page-hero{ background: none; border: 0; border-radius: 0; padding: 0; }
+.page-hero .hero-main{ max-width: 1180px; margin: 0 auto; padding: 28px 20px 0; }
+.page-hero .breadcrumb{ margin: 0 0 18px; padding: 0; max-width: none; }
+.page-hero h1{ font-size: 40px; font-weight: 600; line-height: 1.2; letter-spacing: -.01em; margin: 0; }
+.page-hero .search-results-title{ font-size: 32px; }
+.page-hero .collection-head{ margin: 0; align-items: center; gap: 16px; }
+.page-hero .collection-head h1{ margin: 0 0 8px; }
+.page-hero .article-meta-row{ margin: 24px 0 0; padding: 0 0 20px; border: 0; border-bottom: 1px solid var(--border); }
+.page-hero .collection-head{ padding-bottom: 20px; border-bottom: 1px solid var(--border); }
 .page-col .article-body{ margin-top: 0; }
-@media (max-width: 720px){ .page-hero h1{ font-size: 26px; } }
+@media (max-width: 720px){
+  .home-hero{ padding: 40px 16px 28px; }
+  .page-hero .hero-main{ padding: 20px 16px 0; }
+  .page-hero h1{ font-size: 30px; }
+  .page-hero .search-results-title{ font-size: 26px; }
+}
