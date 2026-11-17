@@ -501,8 +501,8 @@ html[data-theme="light"] .icon-btn:hover{ background: #f3f4f6; }
   height: 40px; padding: 0 18px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer;
   transition: background .12s, border-color .12s;
 }
-.hero-btn.primary{ background: var(--text); color: var(--bg); border: 1px solid var(--text); }
-.hero-btn.primary:hover{ background: color-mix(in srgb, var(--text) 82%, var(--bg)); }
+.hero-btn.primary{ background: var(--brand); color: #fff; border: 1px solid var(--brand); }
+.hero-btn.primary:hover{ background: var(--brand-hover); border-color: var(--brand-hover); }
 .hero-btn.ghost{ background: transparent; color: var(--text); border: 1px solid var(--border-hi); }
 .hero-btn.ghost:hover{ background: var(--bg-hover); }
 .home-hero-rule{ max-width: 880px; margin: 32px auto 0; padding: 0 40px; }
