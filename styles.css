@@ -8,21 +8,22 @@
 
 :root{
   --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
-  --font-display: var(--font-body);
+  --font-display: "Source Serif 4", "Iowan Old Style", "Palatino Linotype", Georgia, "Noto Serif", serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
   /* Light (default) */
-  --bg: #ffffff;
+  --bg: #faf9f5;
   --bg-raised: #ffffff;
-  --bg-sunken: #f6f8fa;
-  --bg-inset: #eaeef2;
-  --bg-hover: rgba(208,215,222,.32);
-  --border: #d0d7de;
-  --border-soft: #d8dee4;
-  --border-hi: #afb8c1;
-  --text: #1f2328;
-  --text-dim: #59636e;
-  --text-faint: #6e7781;
+  --bg-sunken: #f3f1ea;
+  --bg-inset: #ebe8de;
+  --bg-hover: rgba(20,20,19,.05);
+  --bg-active: rgba(20,20,19,.09);
+  --border: #dedbd0;
+  --border-soft: #e8e5db;
+  --border-hi: #c4c0b3;
+  --text: #141413;
+  --text-dim: #5e5d59;
+  --text-faint: #87867f;
 
   --brand: #059669;
   --brand-hover: #047857;
@@ -35,9 +36,9 @@
   --accent-tint: #fff8c5;
   --accent-line: rgba(212,167,44,.5);
 
-  --code-bg: #f6f8fa;
-  --code-text: #1f2328;
-  --code-inline: rgba(129,139,152,.16);
+  --code-bg: #f3f1ea;
+  --code-text: #141413;
+  --code-inline: rgba(20,20,19,.07);
 
   --radius-sm: 6px;
   --radius-md: 6px;
@@ -55,6 +56,7 @@ html[data-theme="dark"]{
   --bg-sunken: #151b23;
   --bg-inset: #262c36;
   --bg-hover: rgba(177,186,196,.12);
+  --bg-active: rgba(177,186,196,.2);
   --border: #3d444d;
   --border-soft: #30363d;
   --border-hi: #656c76;
@@ -177,9 +179,9 @@ html[data-theme="light"] .icon-btn:hover{ background: #f3f4f6; }
 }
 .drawer-scrim.open{ opacity: 1; pointer-events: auto; }
 .topic-drawer{
-  position: fixed; top: 0; right: 0; bottom: 0; width: 320px; max-width: 88vw;
-  background: var(--bg-sunken); border-left: 1px solid var(--border); z-index: 60;
-  transform: translateX(100%); transition: transform .22s ease;
+  position: fixed; top: 0; left: 0; bottom: 0; width: 300px; max-width: 86vw;
+  background: var(--bg-sunken); border-right: 1px solid var(--border); z-index: 60;
+  transform: translateX(-105%); transition: transform .22s ease;
   display: flex; flex-direction: column;
 }
 .topic-drawer.open{ transform: translateX(0); box-shadow: var(--shadow-pop); }
@@ -376,8 +378,6 @@ html[data-theme="light"] .icon-btn:hover{ background: #f3f4f6; }
 }
 .callout-icon{ flex-shrink: 0; margin-top: 2px; color: var(--text-dim); }
 
-.callout.tip{ border-left-color: var(--brand-ring); }
-.callout.tip .callout-icon{ color: var(--brand-link); }
 .callout.warn{ border-left-color: var(--accent); }
 .callout.warn .callout-icon{ color: var(--accent); }
 .callout p{ margin: 0; }
@@ -447,21 +447,10 @@ html[data-theme="light"] .icon-btn:hover{ background: #f3f4f6; }
 @media (max-width: 720px){
   .topnav{ display: none; }
   .topbar-inner{ gap: 8px; padding: 0 12px; }
-  .brand-sub{ display: none; }
 
-  /* Collapse the search pill into an icon button; tapping it expands
-     the topbar into a full-width search row. */
-  .topbar-search{ display: none; }
-  .icon-btn.search-toggle{ display: inline-flex; margin-left: auto; }
-  .topbar-inner.search-open .brand,
-  .topbar-inner.search-open .search-toggle,
-  .topbar-inner.search-open .theme-toggle,
-  .topbar-inner.search-open .nav-toggle{ display: none; }
-  .topbar-inner.search-open .topbar-search{
-    display: flex; max-width: none; width: 100%; margin: 0;
-  }
-  .topbar-inner.search-open{ gap: 0; }
-  .topbar-inner.search-open .search-close{ display: flex; }
+  .topbar-search{ max-width: none; margin-left: 0; }
+  .icon-btn.search-toggle{ display: none; }
+  .brand-name, .brand-sub{ display: none; }
 
   .collections-grid{ grid-template-columns: 1fr; }
   .home-hero{ padding: 40px 16px 32px; }
@@ -478,25 +467,80 @@ html[data-theme="light"] .icon-btn:hover{ background: #f3f4f6; }
 }
 
 /* ==========================================================================
-   PLAIN PAGE HEADERS — like Claude's help center: no coloured band, just the
-   page background, a muted breadcrumb, a big title, date + "Copy for LLM",
-   and a thin divider before the content.
+   DOCS LOOK — ported from docs.joytree.site: warm paper background, serif
+   display titles, 880px reading column, quiet panels, black/outline buttons,
+   breadcrumb + serif title + hairline page headers.
    ========================================================================== */
-.home-hero{ background: none; border-bottom: 0; padding: 64px 20px 36px; }
-.home-hero h1{ font-size: clamp(30px, 5vw, 44px); font-weight: 600; letter-spacing: -.01em; }
+.topbar-inner{ max-width: 1600px; padding: 0 12px; gap: 8px; }
+@media (min-width: 900px){ .topbar-inner{ padding: 0 24px; gap: 12px; } }
+.brand-mark{ width: 24px; height: 24px; }
+.nav-toggle{ display: inline-flex; }
+.topbar-search{ margin: 0 auto 0 8px; }
+.topnav{ margin-left: auto; }
+.topbar-search{ margin-right: 0; }
+
+/* serif display type */
+.home-hero h1, .page-hero h1, .collection-head h1, .article-body h1,
+.doc-content h1, .doc-content h2, .section-label{ font-family: var(--font-display); }
+
+/* reading column */
+.page-col, .home-body{ max-width: 880px; margin: 0 auto; padding-left: 40px; padding-right: 40px; }
+.home-body{ padding-top: 32px; }
+
+/* home hero: left-aligned serif title, lede, search, buttons, hairline */
+.home-hero{ max-width: 880px; margin: 0 auto; padding: 56px 40px 0; text-align: left; background: none; border: 0; }
+.home-hero h1{
+  font-size: clamp(34px, 5.4vw, 48px); font-weight: 600; line-height: 1.08; letter-spacing: -.02em;
+  margin: 0 0 14px; max-width: 16ch;
+}
+.home-lede{ font-size: 18px; color: var(--text-dim); margin: 0 0 24px; max-width: 62ch; }
+.home-search{ margin: 0; max-width: 560px; height: 44px; }
+.home-hero .hero-actions{ display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+.hero-btn{
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 40px; padding: 0 18px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer;
+  transition: background .12s, border-color .12s;
+}
+.hero-btn.primary{ background: var(--text); color: var(--bg); border: 1px solid var(--text); }
+.hero-btn.primary:hover{ background: color-mix(in srgb, var(--text) 82%, var(--bg)); }
+.hero-btn.ghost{ background: transparent; color: var(--text); border: 1px solid var(--border-hi); }
+.hero-btn.ghost:hover{ background: var(--bg-hover); }
+.home-hero-rule{ max-width: 880px; margin: 32px auto 0; padding: 0 40px; }
+.home-hero-rule hr{ border: 0; border-top: 1px solid var(--border-soft); margin: 0; }
+.collections-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+
+/* page header: breadcrumb, serif title, hairline (no coloured band) */
 .page-hero{ background: none; border: 0; border-radius: 0; padding: 0; }
-.page-hero .hero-main{ max-width: 1180px; margin: 0 auto; padding: 28px 20px 0; }
-.page-hero .breadcrumb{ margin: 0 0 18px; padding: 0; max-width: none; }
-.page-hero h1{ font-size: 40px; font-weight: 600; line-height: 1.2; letter-spacing: -.01em; margin: 0; }
-.page-hero .search-results-title{ font-size: 32px; }
-.page-hero .collection-head{ margin: 0; align-items: center; gap: 16px; }
+.page-hero .hero-main{ width: 100%; max-width: 880px; margin: 0 auto; padding: 28px 40px 0; }
+.page-hero .breadcrumb{ margin: 0 0 22px; padding: 0; max-width: none; }
+.page-hero h1{
+  color: var(--text); font-size: clamp(34px, 5.4vw, 48px); font-weight: 600; line-height: 1.08;
+  letter-spacing: -.02em; margin: 0 0 14px;
+}
+.page-hero .search-results-title{ font-size: clamp(30px, 4.6vw, 40px); }
+.page-hero .collection-head{ margin: 0; align-items: center; gap: 16px; padding-bottom: 28px; border-bottom: 1px solid var(--border-soft); }
 .page-hero .collection-head h1{ margin: 0 0 8px; }
-.page-hero .article-meta-row{ margin: 24px 0 0; padding: 0 0 20px; border: 0; border-bottom: 1px solid var(--border); }
-.page-hero .collection-head{ padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+.page-hero .article-meta-row{ margin: 0; padding: 0 0 28px; border: 0; border-bottom: 1px solid var(--border-soft); }
+.page-hero .hero-main > h1:last-child{ padding-bottom: 28px; border-bottom: 1px solid var(--border-soft); margin: 0; }
 .page-col .article-body{ margin-top: 0; }
+.page-col{ padding-top: 28px; }
+
+/* tip notes: quiet panels, same family as the page */
+.callout{ border-radius: 8px; }
+.callout.tip{ border: 1px solid var(--border-soft); padding: 12px 16px; background: var(--bg-sunken); }
+.callout.tip .callout-icon{ color: var(--brand-link); }
+.callout.warn{ border: 1px solid var(--accent-line); padding: 12px 16px; background: var(--accent-tint); }
+
 @media (max-width: 720px){
-  .home-hero{ padding: 40px 16px 28px; }
-  .page-hero .hero-main{ padding: 20px 16px 0; }
-  .page-hero h1{ font-size: 30px; }
-  .page-hero .search-results-title{ font-size: 26px; }
+  .page-col, .home-body{ padding-left: 20px; padding-right: 20px; }
+  .home-hero{ padding: 32px 20px 0; }
+  .home-hero-rule{ padding: 0 20px; margin-top: 24px; }
+  .home-lede{ font-size: 16px; }
+  .page-hero .hero-main{ padding: 22px 20px 0; }
+  .collections-grid{ grid-template-columns: 1fr; }
+}
+@media (max-width: 480px){
+  .topbar-inner{ gap: 8px; padding: 0 10px; }
+  .page-col, .home-body, .home-hero, .home-hero-rule{ padding-left: 14px; padding-right: 14px; }
+  .page-hero .hero-main{ padding: 18px 16px 0; }
 }
