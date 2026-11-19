@@ -845,3 +845,94 @@ html[data-theme="dark"] .hero-art{
   .hero-art *{ animation: none !important; }
   .hero-art .a-pkt{ display: none; }
 }
+
+
+/* ==========================================================================
+   Home sections = docs home. Small uppercase section labels and the solid
+   green illustrated cards (flat fill, dotted texture, white line-art that
+   bleeds off the corner, lift on hover). The art is support's own.
+   ========================================================================== */
+.home-body .section-label{
+  font-family: var(--font-body); font-size: 12px; font-weight: 700; line-height: 1.2;
+  letter-spacing: .09em; text-transform: uppercase; color: var(--text-faint); margin: 0 0 14px;
+}
+.collections-grid{ display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 700px){ .collections-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (min-width: 1000px){ .collections-grid{ gap: 20px; } }
+
+.tone-amber{ --c: #065f46; }
+.tone-blue{ --c: #047857; }
+.tone-rose{ --c: #0a6b4a; }
+.tone-green{ --c: #05543a; }
+.collection-card{
+  position: relative; overflow: hidden; isolation: isolate; display: block;
+  min-height: 176px; padding: 22px 22px 24px; border-radius: 12px;
+  background: var(--c); border: 0; color: #fff; text-decoration: none;
+  transition: border-color .18s, box-shadow .18s, transform .18s, background-color .18s;
+}
+.collection-card::before{
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .5;
+  background: radial-gradient(rgba(255,255,255,.18) 1px, transparent 1.4px) 0 0 / 22px 22px;
+}
+.collection-card:hover{
+  text-decoration: none; transform: translateY(-2px); border: 0;
+  background: color-mix(in srgb, var(--c) 86%, #fff);
+  box-shadow: 0 14px 28px -16px rgba(5,69,47,.65);
+}
+.collection-card-title{ position: relative; z-index: 1; margin: 0 0 8px; padding: 0; font-size: 18px; font-weight: 500; letter-spacing: -.01em; color: #fff; }
+.collection-card-desc{ position: relative; z-index: 1; margin: 0; max-width: 30ch; font-size: 14.5px; line-height: 1.55; color: rgba(255,255,255,.86); }
+.collection-card-count{ position: relative; z-index: 1; margin-top: 14px; font-size: 12px; font-weight: 600; letter-spacing: .04em; color: rgba(255,255,255,.7); }
+.collection-card-icon{ display: none; }
+
+.card-art{
+  position: absolute; right: -30px; bottom: -26px; z-index: 0; width: min(58%, 260px); height: auto; opacity: 1;
+  pointer-events: none; color: #fff; --art-line: rgba(255,255,255,.4);
+  transition: transform .25s ease;
+}
+.collection-card:hover .card-art{ transform: translate(-3px,-3px); }
+.card-art .a-t{ fill: rgba(255,255,255,.10); stroke: var(--art-line); stroke-width: 1.2; stroke-linejoin: round; }
+.card-art .a-l{ fill: rgba(255,255,255,.06); stroke: var(--art-line); stroke-width: 1.2; stroke-linejoin: round; }
+.card-art .a-r{ fill: rgba(255,255,255,.16); stroke: var(--art-line); stroke-width: 1.2; stroke-linejoin: round; }
+.card-art .a-ln{ fill: none; stroke: var(--art-line); stroke-width: 1.2; stroke-linecap: round; }
+.card-art .a-bar{ fill: none; stroke: rgba(255,255,255,.7); stroke-width: 3.6; stroke-linecap: round; opacity: .6; stroke-dasharray: 1 1; animation: a-draw 5.4s ease-in-out infinite; }
+.card-art .a-dot{ fill: rgba(255,255,255,.4); }
+.card-art .a-led{ fill: #fff; animation: a-blink 2.4s steps(1) infinite; }
+.card-art .a-chip-bg{ fill: #fff; stroke: rgba(255,255,255,.9); stroke-width: 1; filter: drop-shadow(0 2px 3px rgba(0,0,0,.25)); }
+.card-art .a-chip-ic{ fill: none; stroke: #065f46; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.card-art g{ transform-box: fill-box; transform-origin: center; }
+@keyframes a-float{ 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(var(--amp,-6px)); } }
+@keyframes a-pulse{ 0%,100%{ transform: scale(1); opacity: .85; } 50%{ transform: scale(1.08); opacity: 1; } }
+@keyframes a-blink{ 0%,55%{ opacity: 1; } 56%,100%{ opacity: .15; } }
+@keyframes a-flow{ to{ stroke-dashoffset: -14; } }
+@keyframes a-draw{
+  0%{ stroke-dashoffset: 1; opacity: 0; }
+  14%{ opacity: .85; }
+  42%,78%{ stroke-dashoffset: 0; opacity: .85; }
+  100%{ stroke-dashoffset: -1; opacity: 0; }
+}
+.card-art .a-float{ animation: a-float var(--dur,4s) ease-in-out infinite; }
+.card-art .a-pulse{ animation: a-pulse var(--dur,3s) ease-in-out infinite; }
+.card-art .a-blink{ animation: a-blink 1.8s steps(1) infinite; }
+.card-art .a-dash{ stroke-dasharray: 3 4; animation: a-flow 1.6s linear infinite; }
+.collection-card:hover .card-art .a-float{ animation-duration: calc(var(--dur,4s) * .6); }
+.collection-card:hover .card-art .a-dash{ animation-duration: .8s; }
+@media (prefers-reduced-motion: reduce){
+  .collection-card, .card-art{ transition: none; }
+  .collection-card:hover, .collection-card:hover .card-art{ transform: none; }
+  .card-art .a-float, .card-art .a-pulse, .card-art .a-blink, .card-art .a-dash, .card-art .a-bar, .card-art .a-led{ animation: none; }
+  .card-art .a-bar{ stroke-dasharray: none; }
+}
+@media (max-width: 480px){ .collection-card{ min-height: 172px; padding: 20px 18px 22px; } .card-art{ width: 70%; } }
+@media (min-width: 1000px){
+  .collection-card{ min-height: 210px; padding: 28px 30px; }
+  .collection-card-title{ font-size: 21px; margin-bottom: 10px; }
+  .collection-card-desc{ font-size: 15.5px; max-width: 28ch; }
+  .card-art{ width: min(60%, 420px); right: -34px; bottom: -30px; }
+}
+
+/* phones: keep the floating chips clear of the card text */
+@media (max-width: 700px){
+  .collection-card{ min-height: 204px; }
+  .collection-card-desc{ max-width: 21ch; }
+  .card-art, .collection-card .card-art{ width: 60%; right: -22px; bottom: -22px; }
+}

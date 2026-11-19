@@ -158,9 +158,11 @@
     }).join('');
 
     const grid = document.getElementById('collectionsGrid');
-    grid.innerHTML = NAV.map(group => `
-      <a class="collection-card" href="#/c/${group.key}" data-link>
-        <div class="collection-card-icon">${svgIcon(groupIcon(group.key), 19)}</div>
+    const SCENES = { help: 'contact', troubleshoot: 'fix' };
+    const TONES = ['blue', 'green', 'amber', 'rose'];
+    grid.innerHTML = NAV.map((group, i) => `
+      <a class="collection-card tone-${TONES[i % TONES.length]}" href="#/c/${group.key}" data-link>
+        ${window.SupportArt ? window.SupportArt.card(SCENES[group.key] || 'contact', 'cc' + i) : ''}
         <h3 class="collection-card-title">${group.title}</h3>
         <p class="collection-card-desc">${groupDesc(group.key)}</p>
         <div class="collection-card-count">${articleCount(group)} article${articleCount(group) === 1 ? '' : 's'}</div>
