@@ -305,6 +305,8 @@
       wrap.appendChild(ul);
       nav.appendChild(wrap);
     });
+    // On wide screens the topic list is a permanent sidebar, so show every topic.
+    if (window.matchMedia('(min-width: 1000px)').matches) nav.querySelectorAll('.drawer-group').forEach(g => g.classList.add('open'));
   }
 
   // ---------------------------------------------------------------- theme

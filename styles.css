@@ -544,3 +544,34 @@ html[data-theme="light"] .icon-btn:hover{ background: #f3f4f6; }
   .page-col, .home-body, .home-hero, .home-hero-rule{ padding-left: 14px; padding-right: 14px; }
   .page-hero .hero-main{ padding: 18px 16px 0; }
 }
+
+/* ==========================================================================
+   Wide screens: fill the width like docs.joytree.site. The topic list becomes a
+   permanent left sidebar, the content area fills the rest, and the top bar spans
+   the whole window. Below 1000px the topic list stays a slide-in drawer.
+   ========================================================================== */
+@media (min-width: 1000px){
+  :root{ --side-w: 280px; }
+  .topbar-inner{ max-width: none; padding: 0 24px; }
+  .nav-toggle{ display: none; }
+  .brand{ width: calc(var(--side-w) - 24px); }
+  .topbar-search{ flex: 1; max-width: 560px; margin: 0 auto 0 0; }
+
+  .drawer-scrim{ display: none; }
+  .drawer-head{ display: none; }
+  .topic-drawer{
+    top: var(--topbar-h); width: var(--side-w); max-width: none; z-index: 40;
+    transform: none; transition: none; box-shadow: none;
+  }
+  .topic-drawer.open{ box-shadow: none; }
+  .drawer-nav{ padding-top: 16px; }
+
+  #main, .site-footer{ margin-left: var(--side-w); width: auto; }
+
+  .home-hero, .home-hero-rule, .home-body{ max-width: 1160px; padding-left: 56px; padding-right: 56px; }
+  .home-hero{ padding-top: 64px; }
+  .home-hero h1{ max-width: none; }
+  .home-lede{ max-width: 70ch; }
+  .home-search{ max-width: 720px; }
+  .page-hero .hero-main, .page-col{ max-width: 1000px; padding-left: 56px; padding-right: 56px; }
+}
