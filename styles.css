@@ -936,3 +936,22 @@ html[data-theme="dark"] .hero-art{
   .collection-card-desc{ max-width: 21ch; }
   .card-art, .collection-card .card-art{ width: 60%; right: -22px; bottom: -22px; }
 }
+
+/* ==========================================================================
+   Search bars and inputs: flat. No gradients, no glow / halo rings, no native
+   gradient styling. Focus is shown by the border turning green only.
+   ========================================================================== */
+input, textarea, select,
+.home-search, .topbar-search{
+  background-image: none; box-shadow: none; text-shadow: none;
+  -webkit-appearance: none; appearance: none; -webkit-tap-highlight-color: transparent;
+}
+.home-search:hover, .topbar-search:hover,
+.home-search:focus-within, .topbar-search:focus-within,
+input:focus, input:focus-visible, textarea:focus, textarea:focus-visible{ box-shadow: none; outline: none; }
+.home-search:focus-within, .topbar-search:focus-within{ border-color: var(--brand-ring); }
+.search-results{ background-image: none; }
+input:-webkit-autofill, input:-webkit-autofill:focus{
+  -webkit-box-shadow: 0 0 0 1000px var(--bg-raised) inset; box-shadow: 0 0 0 1000px var(--bg-raised) inset;
+  -webkit-text-fill-color: var(--text); background-image: none;
+}
