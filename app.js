@@ -400,6 +400,19 @@
       if (topbarInner) topbarInner.classList.remove('search-open');
     }
   });
+  // "/" and Ctrl/Cmd+K focus the top bar search, like the docs
+  const kbdHint = document.getElementById('searchKbd');
+  if (kbdHint) kbdHint.textContent = /Mac|iPhone|iPad/.test(navigator.platform || '') ? '\u2318K' : 'Ctrl K';
+  document.addEventListener('keydown', (e) => {
+    const isK = (e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k';
+    if (!isK && (e.key !== '/' || e.ctrlKey || e.metaKey || e.altKey)) return;
+    const t = e.target;
+    if (!isK && t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+    e.preventDefault();
+    if (getComputedStyle(searchInput.closest('.topbar-search')).display === 'none' && searchToggle) searchToggle.click();
+    else { searchInput.focus(); searchInput.select(); }
+  });
+
   document.addEventListener('click', (e) => {
     if (!document.getElementById('topbarSearchWrap').contains(e.target)) searchResults.hidden = true;
   });
