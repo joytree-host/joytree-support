@@ -148,7 +148,7 @@
   }
 
   // ---------------------------------------------------------------- homepage render
-  const POPULAR_KEYS = ['quickstart', 'deploy-github', 'ts_deploy_failed', 'projects-env', 'ts_login_stuck', 'account-apikey'];
+  const POPULAR_KEYS = ['account-support', 'ts_deploy_failed', 'ts_login_stuck', 'ts_domain_not_verifying', 'ts_billing_question'];
 
   function renderHome() {
     const popular = document.getElementById('popularList');
