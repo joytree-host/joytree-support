@@ -575,3 +575,61 @@ html[data-theme="light"] .icon-btn:hover{ background: #f3f4f6; }
   .home-search{ max-width: 720px; }
   .page-hero .hero-main, .page-col{ max-width: 1000px; padding-left: 56px; padding-right: 56px; }
 }
+
+/* ==========================================================================
+   Buttons, ported from docs.joytree.site: dashboard-style raised edge.
+   White buttons get a 2px bottom edge, the green button is filled with a
+   darker edge, hover lifts 1px and press sinks it. The header icon buttons on
+   phones sit flat on the bar, as in the docs.
+   ========================================================================== */
+:root{
+  --btn-radius: 10px;
+  --btn-edge: #afb8c1;
+  --btn-hi: rgba(255,255,255,.7);
+}
+html[data-theme="dark"]{ --btn-edge: rgba(0,0,0,.55); --btn-hi: rgba(255,255,255,.07); }
+
+.hero-btn, .icon-btn, .copy-btn, .copy-llm-btn, .fb-btn, .contact-email-btn{
+  border-width: 1.5px; border-style: solid; border-radius: var(--btn-radius);
+  transition: background-color .15s ease, border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+.hero-btn, .fb-btn, .contact-email-btn{ font-weight: 600; text-decoration: none; }
+
+/* white / outlined */
+.hero-btn.ghost, .icon-btn, .copy-btn, .copy-llm-btn, .fb-btn{
+  border-color: var(--border-hi);
+  box-shadow: 0 1px 0 var(--btn-hi) inset, 0 2px 0 var(--btn-edge);
+}
+.hero-btn.ghost:hover, .icon-btn:hover, .copy-btn:hover, .copy-llm-btn:hover, .fb-btn:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 1px 0 var(--btn-hi) inset, 0 3px 0 var(--btn-edge);
+}
+
+/* filled green */
+.hero-btn.primary, .contact-email-btn{
+  background: #059669; color: #fff; -webkit-text-fill-color: #fff;
+  border-color: #047857;
+  box-shadow: 0 1px 0 rgba(255,255,255,.25) inset, 0 2px 0 #047857;
+}
+.hero-btn.primary:hover, .contact-email-btn:hover{
+  background: #047857; border-color: #065f46;
+  box-shadow: 0 2px 0 #065f46; transform: translateY(-1px);
+}
+
+/* pressed */
+.hero-btn:active, .icon-btn:active, .copy-btn:active, .copy-llm-btn:active, .fb-btn:active, .contact-email-btn:active{
+  transform: translateY(1px); box-shadow: 0 0 0 transparent;
+}
+.copy-btn{ border-radius: 8px; }
+
+/* phones: header icon buttons sit flat on the bar */
+@media (max-width: 860px){
+  html .topbar .icon-btn,
+  html .topbar .icon-btn:hover,
+  html[data-theme] .topbar .icon-btn:hover{
+    background: transparent; border-color: transparent; box-shadow: none; transform: none;
+    width: 40px; height: 40px; flex: 0 0 40px; border-radius: 10px;
+  }
+  html[data-theme] .topbar .icon-btn:active{ background: var(--bg-sunken); border-color: transparent; box-shadow: none; transform: none; }
+  html .topbar .icon-btn svg{ width: 22px; height: 22px; }
+}
